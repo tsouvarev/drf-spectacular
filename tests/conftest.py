@@ -85,11 +85,11 @@ def pytest_configure():
             'guardian',
         )
 
-    django.setup()
+    # django.setup()
     # For whatever reason this works locally without an issue.
     # on TravisCI content_type table is missing in the sqlite db as
     # if no migration ran, but then why does it work locally?!
-    management.call_command('migrate')
+    # management.call_command('migrate')
 
 
 @pytest.fixture()
@@ -107,3 +107,8 @@ def warnings(capsys):
     yield capsys
     captured = capsys.readouterr()
     assert captured.err
+
+
+@pytest.fixture(autouse=True)
+def enable_db_access_for_all_tests(django_db_setup):
+    pass
