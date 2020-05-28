@@ -415,7 +415,8 @@
             "integer",
             "number",
             "object",
-            "string"
+            "string",
+            "file"
           ]
         },
         "not": {

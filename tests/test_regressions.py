@@ -589,4 +589,4 @@ def test_file_field_duality_on_split_request(no_warnings):
     )['$ref'] == '#/components/schemas/XRequest'
 
     assert schema['components']['schemas']['X']['properties']['file']['format'] == 'uri'
-    assert schema['components']['schemas']['XRequest']['properties']['file']['format'] == 'binary'
+    assert schema['components']['schemas']['XRequest']['properties']['file']['type'] == 'file'

@@ -538,10 +538,10 @@ class AutoSchema(ViewInspector):
 
         if isinstance(field, serializers.FileField):
             if spectacular_settings.COMPONENT_SPLIT_REQUEST and direction == 'request':
-                content = build_basic_type(OpenApiTypes.BINARY)
+                content = build_basic_type(OpenApiTypes.FILE)
             else:
                 use_url = getattr(field, 'use_url', api_settings.UPLOADED_FILES_USE_URL)
-                content = build_basic_type(OpenApiTypes.URI if use_url else OpenApiTypes.STR)
+                content = build_basic_type(OpenApiTypes.URI if use_url else OpenApiTypes.FILE)
             return append_meta(content, meta)
 
         if isinstance(field, serializers.SerializerMethodField):
